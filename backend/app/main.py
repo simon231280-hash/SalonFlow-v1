@@ -89,3 +89,19 @@ async def root():
     return {
         "message": f"Welcome to {settings.APP_NAME}"
     }
+from app.core.database import AsyncSessionLocal
+from sqlalchemy import text
+
+
+@app.get("/debug/database")
+async def debug_database():
+    async with AsyncSessionLocal() as db:
+        result = {}
+
+        for table in ["users", "customers", "employees", "services", "products"]:
+            count = await db.execute(
+                text(f"SELECT COUNT(*) FROM {table}")
+            )
+            result[table] = count.scalar()
+
+        return result
