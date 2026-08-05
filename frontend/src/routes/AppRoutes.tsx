@@ -14,7 +14,7 @@ import Invoices from "../pages/invoices/Invoices";
 import InvoiceDetails from "../pages/invoices/InvoiceDetails";
 import Checkout from "../pages/checkout/Checkout";
 import Reports from "../pages/reports/Reports";
-
+import Calendar from "../pages/calendar/Calendar";
 
 export default function AppRoutes() {
     return (
@@ -121,6 +121,12 @@ export default function AppRoutes() {
                             <Reports />
                         </ProtectedRoute>
                     }
+                <Route
+                    path="/calendar"
+                    element={<Calendar />}
+                />                 
+
+
                 />
                 <Route
                   path="/settings"

@@ -36,6 +36,9 @@ export default function Sidebar() {
         <Link className="block hover:text-blue-400" to="/appointments">
           Appointments
         </Link>
+        <Link className="block hover:text-blue-400" to="/calendar">
+          Calendar
+        </Link>
 	<Link className="block hover:text-blue-400" to="/checkout">
  	  Checkout
 	</Link>
