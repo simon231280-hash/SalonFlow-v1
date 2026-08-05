@@ -20,6 +20,7 @@ from app.api.dashboard import router as dashboard_router
 from app.api.products import router as product_router
 from app.api.inventory import router as inventory_router
 from app.api.reports import router as report_router
+from app.api.calendar import router as calendar_router
 from app.api.invoice_products import (
     router as invoice_product_router,
 )
@@ -76,7 +77,7 @@ app.include_router(app_settings_router)
 app.include_router(admin_router)
 app.include_router(health_router)
 app.include_router(backup.router)
-
+app.include_router(calendar_router)
 
 @app.get("/")
 async def root():

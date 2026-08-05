@@ -142,7 +142,6 @@ export default function AppRoutes() {
             </ProtectedRoute>
           }
         />
-
       </Routes>
     </BrowserRouter>
   );
