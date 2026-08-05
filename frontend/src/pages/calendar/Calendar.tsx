@@ -138,11 +138,22 @@ export default function Calendar() {
                       </div>
 
 
-                      <div>
-                        Status:
-                        {" "}
-                        {appointment.status}
-                      </div>
+                      <div className="mt-2">
+                        <span
+                          className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
+                            appointment.status === "scheduled"
+                              ? "bg-green-100 text-green-700"
+                              : appointment.status === "completed"
+                              ? "bg-blue-100 text-blue-700"
+                              : appointment.status === "cancelled"
+                              ? "bg-red-100 text-red-700"
+                              : "bg-gray-100 text-gray-700"
+                          }`}
+                      >
+                          {appointment.status.charAt(0).toUpperCase() +
+                            appointment.status.slice(1)}
+                      </span>
+                    </div>
 
 
                     </div>
