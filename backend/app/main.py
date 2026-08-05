@@ -76,6 +76,13 @@ app.include_router(health_router)
 app.include_router(backup.router)
 
 
+@app.get("/debug/frontend")
+async def debug_frontend():
+    return {
+        "frontend_url": settings.FRONTEND_URL,
+    }
+
+
 @app.get("/")
 async def root():
     return {
