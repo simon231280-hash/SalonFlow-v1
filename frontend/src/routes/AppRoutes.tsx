@@ -123,7 +123,11 @@ export default function AppRoutes() {
                     }
                 <Route
                     path="/calendar"
-                    element={<Calendar />}
+                    element={
+                         <ProtectedRoute>
+                             <Calendar />
+                         </ProtectedRoute>
+                    }
                 />                 
 
 
