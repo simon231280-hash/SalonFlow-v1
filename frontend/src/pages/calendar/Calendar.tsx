@@ -9,7 +9,12 @@ import {
 import type {
   CalendarAppointment,
 } from "../../services/calendarService";
+import AppointmentForm from "../../components/appointments/AppointmentForm";
 
+import {
+  getAppointment,
+  updateAppointment,
+} from "../../services/appointmentService";
 export default function Calendar() {
 
   const today =
@@ -22,7 +27,11 @@ export default function Calendar() {
 
   const [appointments, setAppointments] =
     useState<CalendarAppointment[]>([]);
+  const [showForm, setShowForm] =
+    useState(false);
 
+  const [editingAppointment, setEditingAppointment] =
+    useState<any>(null);
   useEffect(() => {
 
     loadCalendar();
@@ -120,10 +129,58 @@ export default function Calendar() {
                   appointments.map(
                     (appointment) => (
 
-                      <div
-                        key={appointment.id}
-                        className="border rounded-lg p-4"
-                      >
+                    <div
+                      key={appointment.id}
+                      onClick={async () => {
+
+                        try {
+
+                          const fullAppointment =
+                            await getAppointment(
+                              appointment.id
+                            );
+
+                          setEditingAppointment({
+
+                            id: fullAppointment.id,
+
+                            customer_id:
+                              fullAppointment.customer.id,
+
+                            employee_id:
+                              fullAppointment.employee.id,
+
+                            service_ids:
+                              fullAppointment.appointment_services.map(
+                                (s: any) => s.service.id
+                              ),
+
+                            appointment_time:
+                              fullAppointment.appointment_time.slice(
+                                0,
+                                16
+                              ),
+
+                            notes:
+                              fullAppointment.notes,
+
+                          });
+
+                          setShowForm(true);
+
+                        } catch (error) {
+
+                          console.error(error);
+
+                          alert(
+                            "Unable to load appointment."
+                          );
+
+                        }
+
+                      }}
+                      className="border rounded-lg p-4 cursor-pointer hover:bg-blue-50 transition"
+                    >
 
                         <div className="font-bold text-lg">
                           {appointment.customer}
@@ -202,6 +259,53 @@ export default function Calendar() {
         </div>
 
       </div>
+
+         {showForm && (
+
+        <AppointmentForm
+          appointment={editingAppointment}
+          onSave={async (data: any) => {
+
+            try {
+
+              await updateAppointment(
+                data.id,
+                {
+                  appointment_time:
+                    data.appointment_time,
+
+                  notes:
+                    data.notes,
+                }
+              );
+
+              setShowForm(false);
+
+              setEditingAppointment(null);
+
+              await loadCalendar();
+
+            } catch (error) {
+
+              console.error(error);
+
+              alert(
+                "Unable to update appointment."
+              );
+
+            }
+
+          }}
+          onClose={() => {
+
+            setShowForm(false);
+
+            setEditingAppointment(null);
+
+          }}
+        />
+
+      )}
 
     </AppLayout>
 

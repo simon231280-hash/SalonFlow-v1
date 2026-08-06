@@ -93,3 +93,12 @@ export async function deleteAppointment(
 ): Promise<void> {
   await api.delete(`/appointments/${id}`);
 }
+export async function getAppointment(
+  id: number
+): Promise<Appointment> {
+  const response = await api.get(
+    `/appointments/${id}`
+  );
+
+  return response.data;
+}
