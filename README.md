@@ -1,4 +1,10 @@
 # SalonFlow
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.116-green)
+![React](https://img.shields.io/badge/React-19-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 SalonFlow is a modern Beauty Salon Management System designed to simplify daily salon operations. It provides customer management, appointment scheduling, point-of-sale, inventory management, invoicing, reporting, and business settings in one integrated application.
 
@@ -90,6 +96,41 @@ SalonFlow is a modern Beauty Salon Management System designed to simplify daily 
 * Receipt footer
 
 ---
+## Screenshots
+
+### Login
+
+![Login](screenshots/login.png)
+
+---
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+### Customers
+
+![Customers](screenshots/customers.png)
+
+---
+
+### Calendar
+
+![Calendar](screenshots/calendar.png)
+
+---
+
+### Checkout
+
+![Checkout](screenshots/checkout.png)
+
+---
+
+### Reports
+
+![Reports](screenshots/reports.png)
 
 # Technology Stack
 
@@ -161,7 +202,17 @@ SalonFlow-v1/
 Screenshots will be added in the next release.
 
 ---
+## Live Demo
 
+**Frontend (Vercel)**
+
+https://salon-flow-v1.vercel.app/
+
+**Backend API**
+
+https://salonflow-v1.onrender.com/docs
+
+---
 # Installation
 
 Please see **INSTALL.md**.
