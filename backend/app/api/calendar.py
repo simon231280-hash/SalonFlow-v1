@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
-
+from app.models.appointment_service import AppointmentService
 from app.core.database import get_db
 from app.api.dependencies import get_current_user
 from app.models.user import User
@@ -42,7 +42,9 @@ async def get_day_calendar(
             selectinload(Appointment.employee),
             selectinload(
                 Appointment.appointment_services
-            ),
+            ).selectinload(
+                AppointmentService.service
+            )
         )
         .where(
             Appointment.appointment_time >= start,
@@ -66,7 +68,10 @@ async def get_day_calendar(
 
             "employee":
                 f"{appointment.employee.first_name} {appointment.employee.last_name}",
-
+            "services": [
+                item.service.name
+                for item in appointment.appointment_services
+            ],
             "start":
                 appointment.appointment_time,
 
