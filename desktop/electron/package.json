@@ -1,0 +1,55 @@
+{
+  "name": "salonflow-desktop",
+  "productName": "SalonFlow",
+  "version": "2.0.0",
+  "description": "SalonFlow Desktop Edition",
+  "author": "Ye Htut Min",
+  "license": "Commercial",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "build": {
+    "appId": "com.salonflow.desktop",
+    "productName": "SalonFlow",
+    "directories": {
+      "output": "../release"
+    },
+    "files": [
+      "**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../../frontend/dist",
+        "to": "frontend"
+      },
+      {
+        "from": "../../backend/dist/SalonFlowAPI",
+        "to": "SalonFlowAPI"
+      },
+      {
+        "from": "../../backend/.env",
+        "to": ".env"
+      }
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "devDependencies": {
+    "electron": "^43.3.0",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "axios": "^1.19.0"
+  }
+}

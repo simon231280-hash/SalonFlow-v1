@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import ProtectedRoute from "../components/ProtectedRoute";
 import Login from "../pages/auth/Login";
@@ -18,7 +18,7 @@ import Settings from "../pages/settings/Settings";
 
 export default function AppRoutes() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
 
         <Route
@@ -143,6 +143,6 @@ export default function AppRoutes() {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
