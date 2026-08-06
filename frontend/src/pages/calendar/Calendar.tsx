@@ -129,11 +129,29 @@ export default function Calendar() {
                           {appointment.customer}
                         </div>
 
-                        <div>
-                          Employee:
-                          {" "}
-                          {appointment.employee}
-                        </div>
+                      <div className="mt-2">
+                        <div className="text-sm text-gray-500">
+                           Services
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 mt-1">
+                        {appointment.services.map((service) => (
+                          <span
+                            key={service}
+                            className="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs"
+                          >
+                            {service}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-3">
+                      <span className="font-semibold">
+                        Employee:
+                      </span>{" "}
+                      {appointment.employee}
+                    </div>
 
                         <div>
                           Time:

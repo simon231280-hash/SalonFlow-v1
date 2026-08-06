@@ -5,6 +5,7 @@ export interface CalendarAppointment {
   id: number;
   customer: string;
   employee: string;
+  services: string[];
   start: string;
   end: string;
   status: string;
